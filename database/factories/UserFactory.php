@@ -32,7 +32,7 @@ class UserFactory extends Factory
             'mobile_verified_at' => now(),
             'password' => static::$password ??= Hash::make('password'),
             'remember_token' => Str::random(10),
-            'credit' => fake()->randomDigit(),
+            'credit' => rand(10000, 100000),
         ];
     }
 
