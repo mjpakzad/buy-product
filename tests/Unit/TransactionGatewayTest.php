@@ -22,7 +22,7 @@ class TransactionGatewayTest extends TestCase
             'ASANPARDAKHT' => 9,
             'PAYPAL' => 10,
             'PAYIR' => 11,
-            'SADAD' => 14,
+            'SADAD' => 12,
         ];
         $this->assertEquals($statuses, TransactionGateway::options());
     }
