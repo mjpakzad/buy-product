@@ -2,6 +2,7 @@
 
 namespace App\Enums;
 
+use App\Enums\Traits\SwapTrait;
 use ArchTech\Enums\InvokableCases;
 use ArchTech\Enums\Options;
 use ArchTech\Enums\Values;
@@ -11,6 +12,7 @@ enum TransactionGateway: int
     use InvokableCases;
     use Values;
     use Options;
+    use SwapTrait;
 
     case CREDIT = 1;
 
@@ -34,5 +36,5 @@ enum TransactionGateway: int
 
     case PAYIR = 11;
 
-    case SADAD = 14;
+    case SADAD = 12;
 }
