@@ -22,14 +22,12 @@ class ProductFactory extends Factory
      */
     public function definition(): array
     {
-        $discount = rand(0, 1) ? rand(1, 100) : 0;
-        $price = rand(1, 150000);
         return [
             'slug' => fake()->unique()->slug(),
             'heading' => fake()->sentence(),
             'content' => fake()->text(),
             'stock' => rand(0, 100),
-            'price' => rand(1000, 16000000),
+            'price' => rand(1, 1500),
             'status' => fake()->randomElement(ProductStatus::values()),
         ];
     }
