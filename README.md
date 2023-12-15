@@ -53,3 +53,6 @@ docker exec -it app php artisan migrate --seed
 ```bash
 docker exec -it app php artisan test
 ```
+
+## Postman
+A postman collection file included in the root of source code.
