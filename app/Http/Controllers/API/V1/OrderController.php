@@ -16,6 +16,9 @@ use App\Repositories\Contracts\OrderRepositoryInterface;
 use App\Repositories\Contracts\ProductRepositoryInterface;
 use App\Repositories\Contracts\TransactionRepositoryInterface;
 use App\Repositories\Contracts\UserRepositoryInterface;
+use App\Services\SMS\ASmsPanel;
+use App\Services\SMS\BSmsPanel;
+use App\Services\SMS\CSmsPanel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redis;
@@ -102,6 +105,16 @@ class OrderController extends Controller
             DB::commit();
 
             Redis::del("product:{$product->id}:reserved");
+
+            $message = "Thank you for your purchase!";
+
+            $firstPanel = new ASmsPanel();
+            $secondPanel = new BSmsPanel();
+            $thirdPanel = new CSmsPanel();
+
+            $firstPanel->setNext($secondPanel)->setNext($thirdPanel);
+
+            $firstPanel->sendSms($message, $user->mobile);
 
             return response()->success(['message' => 'Your order has been successfully paid!']);
         } catch (\Exception $e) {
